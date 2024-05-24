@@ -117,9 +117,11 @@ jobs:
           sarif_file: phpstan.sarif
 
       - name: "Export SARIF file from code scanning alerts"
+        if: always()
         uses: "alcaeus/drivers-github-tools/code-scanning-export@export-code-scanning-report"
 
       - name: "Attach generated SARIF file to build artifacts"
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: code-scanning-alerts.json
