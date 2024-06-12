@@ -125,7 +125,7 @@ jobs:
       - name: "Generate authorized publication document"
         uses: mongodb-labs/drivers-github-tools/authorized-pub@v2
         with:
-          product_name: "MongoDB PHP Driver (library)"
+          product_name: "MongoDB Laravel Integration"
           release_version: ${{ inputs.version }}
           filenames: ""
           token: ${{ env.GH_TOKEN }}
@@ -133,7 +133,7 @@ jobs:
       - name: "Download SBOM file from Silk"
         uses: mongodb-labs/drivers-github-tools/sbom@v2
         with:
-          silk_asset_group: mongodb-php-driver-library
+          silk_asset_group: laravel-mongodb
 
       - name: "Upload SBOM as release artifact"
         run: gh release upload ${{ inputs.version }} ${{ env.S3_ASSETS }}/cyclonedx.sbom.json
@@ -154,4 +154,4 @@ jobs:
         uses: mongodb-labs/drivers-github-tools/upload-s3-assets@v2
         with:
           version: ${{ inputs.version }}
-          product_name: mongo-php-library
+          product_name: laravel-mongodb
