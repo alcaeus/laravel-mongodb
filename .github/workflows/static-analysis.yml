@@ -1,21 +1,15 @@
-name: "Coding Standards"
+name: "Static Analysis"
 
 on:
   push:
   pull_request:
-  workflow_call:
-    inputs:
-      ref:
-        description: "The git ref to check"
-        type: string
-        required: true
 
 env:
   PHP_VERSION: "8.2"
   DRIVER_VERSION: "stable"
 
 jobs:
-  analysis:
+  phpstan:
     runs-on: "ubuntu-22.04"
     continue-on-error: true
     strategy:
@@ -26,8 +20,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.ref }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
