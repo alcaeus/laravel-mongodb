@@ -126,7 +126,7 @@ jobs:
       - name: "Download SBOM file from Silk"
         uses: mongodb-labs/drivers-github-tools/sbom@v2
         with:
-          silk_asset_group: laravel-mongodb
+          silk_asset_group: mongodb-laravel-integration
 
       - name: "Upload SBOM as release artifact"
         run: gh release upload ${{ inputs.version }} ${{ env.S3_ASSETS }}/cyclonedx.sbom.json
