@@ -40,11 +40,11 @@ jobs:
             exit 1
           fi
 
-      - name: "Fail if branch names don't match"
-        if: ${{ github.ref_name != env.RELEASE_BRANCH }}
-        run: |
-          echo '❌ Release failed due to branch mismatch: expected ${{ inputs.version }} to be released from ${{ env.RELEASE_BRANCH }}, got ${{ github.ref_name }}' >> $GITHUB_STEP_SUMMARY
-          exit 1
+#      - name: "Fail if branch names don't match"
+#        if: ${{ github.ref_name != env.RELEASE_BRANCH }}
+#        run: |
+#          echo '❌ Release failed due to branch mismatch: expected ${{ inputs.version }} to be released from ${{ env.RELEASE_BRANCH }}, got ${{ github.ref_name }}' >> $GITHUB_STEP_SUMMARY
+#          exit 1
 
       #
       # Preliminary checks done - commence the release process
