@@ -1416,7 +1416,7 @@ class Builder extends BaseBuilder
         }
 
         if (! isset($operator) || $operator === '=' || $operator === 'eq') {
-            $query = [$column => $value];
+            $query = [$column => ['$eq' => $value]];
         } else {
             $query = [$column => ['$' . $operator => $value]];
         }
